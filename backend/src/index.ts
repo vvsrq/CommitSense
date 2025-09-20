@@ -13,11 +13,10 @@ const PORT = process.env.PORT || 3000;
 const GITHUB_WEBHOOK_SECRET = process.env.GITHUB_WEBHOOK_SECRET;
 
 if (!GITHUB_WEBHOOK_SECRET) {
-  console.error("Необходимо установить GITHUB_WEBHOOK_SECRET в .env файле");
+  console.error("You have to set GITHUB_WEBHOOK_SECRET in .env file");
   process.exit(1);
 }
 
-// Middleware для верификации подписи GitHub
 const verifyGitHubSignature = (req: Request, res: Response, next: NextFunction) => {
   const signature = req.get('x-hub-signature-256');
   if (!signature) {

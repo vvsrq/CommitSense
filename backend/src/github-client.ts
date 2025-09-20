@@ -17,11 +17,7 @@ const app = new App({
   Octokit: Octokit,
 });
 
-/**
- * Создает аутентифицированный экземпляр Octokit для конкретной установки приложения.
- * @param installationId - ID установки приложения на репозиторий.
- * @returns Аутентифицированный клиент Octokit.
- */
+
 export const getAuthenticatedOctokit = async (installationId: number): Promise<Octokit> => {
   return await app.getInstallationOctokit(installationId);
 };
